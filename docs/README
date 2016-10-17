@@ -1,0 +1,6 @@
+Home blinder automation project.
+
+Main unit: OrangePi PC
+Input: wall switches, http
+Output: pair of relays per each blinder
+
