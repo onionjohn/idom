@@ -3,24 +3,20 @@
 import wiringpi
 import time
 
-from objects import Blinder
+from objects import *
 
 PS=1
 CT = time.time()
 RS0 = 1
 RS1 = 0
 
-cnt = 0
 queue = []
 
 wiringpi.wiringPiSetup()
 wiringpi.pinMode(7,0)
-wiringpi.pinMode(2,1)
-wiringpi.pinMode(0,1)
-wiringpi.digitalWrite(2,1)
-wiringpi.digitalWrite(0,1)
 
 roleta = Blinder(0,2,10)
+button = Button(7, roleta)
 
 while True:
 	time.sleep(0.05)
