@@ -1,6 +1,8 @@
 import wiringpi
 import time
 
+queue = []
+
 class Blinder:
 
 	__PIN_UP = 0
@@ -70,13 +72,13 @@ class Button:
 	__CHANGE = 0
 	__TIME = 0
 	__CURSTATE = 0 
-	__PRVSTATE = 0
+	__PRVSTATE = 1
 
+	global queue
 
 	def __init__(self, pinin = 0, refobj = 0):
 		self.__PIN_IN = pinin
 		self.__REFOBJ = refobj
-
 		wiringpi.pinMode(self.__PIN_IN,0)
 
 	def check(self):
@@ -85,15 +87,16 @@ class Button:
 			self.__CHANGE = not self.__CHANGE
 			a = time.time()
 			tmp = a - self.__TIME
-			if self.__CURSTATE > self.__PRVSTATE:
+			if self.__CURSTATE < self.__PRVSTATE:
 				
-				print("Edge: falling "+str(tmp))
-			elif self.__CURSTATE < self.__PRVSTATE:
+				print( __name__ + "Edge: falling "+str(tmp))
+			elif self.__CURSTATE > self.__PRVSTATE:
 				self.__REFOBJ.button()
-				print("Edge: rissing ")
+				print("Edge: rissing "+str(tmp))
 			else:
 				print("???")
 			self.__TIME = time.time()
+			self.__PRVSTATE = self.__CURSTATE
 		return
 
 	def report(self):
