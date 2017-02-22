@@ -13,6 +13,7 @@ wiringpi.mcp23017Setup(pin_base+16,i2c_addr_2)
 
 #for pin in pins:
 for pin in range(65,81):
+	print pin
 	wiringpi.pinMode(pin,1)
 	wiringpi.digitalWrite(pin,0)
 	time.sleep(2)

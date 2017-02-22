@@ -25,8 +25,8 @@ class Blinder:
 		return
 
 	def __moveUp(self):
-		wiringpi.digitalWrite(self.__PIN_UP, 0)
 		wiringpi.digitalWrite(self.__PIN_DOWN, 1)
+		wiringpi.digitalWrite(self.__PIN_UP, 0)
 		return
 
 	def __moveDown(self):
@@ -59,11 +59,14 @@ class Blinder:
 
 	def button(self):
 		self.addToQueue()
+		print "no to jedziemy"
 
 	def timeout(self):
 		if (self.__STIME + self.__TIME) < time.time():
 			self.addToQueue()
 		
+	def config(self):
+		print(self.pinup, self.pindown, self.time)
 
 class Button:
 
