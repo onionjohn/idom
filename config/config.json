@@ -1,0 +1,117 @@
+{
+  "version":"0.1",
+  "group":[
+    {
+      "parter":[
+        {
+          "id":1,
+          "name":"Kuchnia 1",
+          "description":"Długie okno",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":2,
+          "name":"Kuchnia 2",
+          "description":"Narożne",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":3,
+          "name":"Jadalnia",
+          "description":"Wyjście na taras z jadalni",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":4,
+          "name":"Salon 1",
+          "description":"Witryna w salonie",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":5,
+          "name":"Salon 2",
+          "description":"Wyjście na ogród",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":6,
+          "name":"Gabinet",
+          "description":"Jaki prezes taki gabinet",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":7,
+          "name":"Schowanko",
+          "description":"Zakaz wstępu",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":8,
+          "name":"Kotłownia",
+          "description":"Zimą tu najcieplej",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        }
+      ]
+    },
+    {
+      "pietro":[
+        {
+          "id":9,
+          "name":"Łazienka",
+          "description":"Łazienka na górze",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":10,
+          "name":"Pokój 1",
+          "description":"Patryśkolandia",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":11,
+          "name":"Sypialnia",
+          "description":"Oknodrzwi",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":12,
+          "name":"Sypialnia",
+          "description":"Drzwi balkonowe",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        },
+        {
+          "id":13,
+          "name":"Pokój",
+          "description":"Drzwi balkonowe",
+          "pinup":1,
+          "pindown":2,
+          "wtime":10
+        }
+      ]
+    }
+  ]
+}
