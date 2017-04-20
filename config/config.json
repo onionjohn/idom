@@ -2,9 +2,11 @@
   "version":"0.1",
   "group":[
     {
-      "parter":[
+      "id":0,
+      "name":"Pater",
+      "blinders":[
         {
-          "id":1,
+          "id":0,
           "name":"Kuchnia 1",
           "description":"Długie okno",
           "pinup":1,
@@ -12,103 +14,105 @@
           "wtime":10
         },
         {
-          "id":2,
+          "id":1,
           "name":"Kuchnia 2",
           "description":"Narożne",
-          "pinup":1,
-          "pindown":2,
+          "pinup":3,
+          "pindown":4,
+          "wtime":10
+        },
+        {
+          "id":2,
+          "name":"Jadalnia",
+          "description":"Wyjście na taras z jadalni",
+          "pinup":5,
+          "pindown":6,
           "wtime":10
         },
         {
           "id":3,
-          "name":"Jadalnia",
-          "description":"Wyjście na taras z jadalni",
-          "pinup":1,
-          "pindown":2,
+          "name":"Salon 1",
+          "description":"Witryna w salonie",
+          "pinup":7,
+          "pindown":8,
           "wtime":10
         },
         {
           "id":4,
-          "name":"Salon 1",
-          "description":"Witryna w salonie",
-          "pinup":1,
-          "pindown":2,
+          "name":"Salon 2",
+          "description":"Wyjście na ogród",
+          "pinup":9,
+          "pindown":10,
           "wtime":10
         },
         {
           "id":5,
-          "name":"Salon 2",
-          "description":"Wyjście na ogród",
-          "pinup":1,
-          "pindown":2,
+          "name":"Gabinet",
+          "description":"Jaki prezes taki gabinet",
+          "pinup":11,
+          "pindown":12,
           "wtime":10
         },
         {
           "id":6,
-          "name":"Gabinet",
-          "description":"Jaki prezes taki gabinet",
-          "pinup":1,
-          "pindown":2,
+          "name":"Schowanko",
+          "description":"Zakaz wstępu",
+          "pinup":13,
+          "pindown":14,
           "wtime":10
         },
         {
           "id":7,
-          "name":"Schowanko",
-          "description":"Zakaz wstępu",
-          "pinup":1,
-          "pindown":2,
-          "wtime":10
-        },
-        {
-          "id":8,
           "name":"Kotłownia",
           "description":"Zimą tu najcieplej",
-          "pinup":1,
-          "pindown":2,
+          "pinup":15,
+          "pindown":16,
           "wtime":10
         }
       ]
     },
     {
-      "pietro":[
+      "id":1,
+      "name":"Pietro",
+      "blinders":[
         {
-          "id":9,
+          "id":8,
           "name":"Łazienka",
           "description":"Łazienka na górze",
-          "pinup":1,
-          "pindown":2,
+          "pinup":17,
+          "pindown":18,
+          "wtime":10
+        },
+        {
+          "id":9,
+          "name":"Pokój 1",
+          "description":"Patryśkolandia",
+          "pinup":19,
+          "pindown":20,
           "wtime":10
         },
         {
           "id":10,
-          "name":"Pokój 1",
-          "description":"Patryśkolandia",
-          "pinup":1,
-          "pindown":2,
+          "name":"Sypialnia",
+          "description":"Oknodrzwi",
+          "pinup":21,
+          "pindown":22,
           "wtime":10
         },
         {
           "id":11,
           "name":"Sypialnia",
-          "description":"Oknodrzwi",
-          "pinup":1,
-          "pindown":2,
+          "description":"Drzwi balkonowe",
+          "pinup":23,
+          "pindown":24,
           "wtime":10
         },
         {
           "id":12,
-          "name":"Sypialnia",
-          "description":"Drzwi balkonowe",
-          "pinup":1,
-          "pindown":2,
-          "wtime":10
-        },
-        {
-          "id":13,
           "name":"Pokój",
           "description":"Drzwi balkonowe",
-          "pinup":1,
-          "pindown":2,
+          "pinup":25,
+          "pindown":26,
           "wtime":10
         }
       ]

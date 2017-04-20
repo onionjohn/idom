@@ -8,16 +8,18 @@ class Blinder:
 	__PIN_UP = 0
 	__PIN_DOWN = 0
 	__TIME = 0
+	__NAME = 'unknown'
 
 	__STIME = 0
 	__DIRECTION = "Up" 
 
 	global queue
 
-	def __init__(self, pinup = 0, pindown = 0, time = 0):
+	def __init__(self, pinup = 0, pindown = 0, time = 0, name = 'unknown'):
 		self.__PIN_UP = pinup
 		self.__PIN_DOWN = pindown
 		self.__TIME = time
+		self.__NAME = name
 		wiringpi.pinMode(self.__PIN_UP,1)
 		wiringpi.pinMode(self.__PIN_DOWN,1)
 		wiringpi.digitalWrite(self.__PIN_UP,1)
@@ -46,27 +48,31 @@ class Blinder:
 	
 	def addToQueue(self):
 		if self in queue:
+			print "[blinder] " + self.__NAME + ': removing from process queue, blinder stopped'
 			self.__stopMove()
 			queue.remove(self)
+			
 		else:
 			queue.append(self)
 			self.__STIME = time.time()
 			if self.__DIRECTION == "Up":
 				self.__moveUp()
+				print "[blinder] " + self.__NAME + ': added to queue, moving UP'
 			else:
 				self.__moveDown()
+				print "[blinder] " + self.__NAME + ': added to queue, moving DOWN'
 		return
 
-	def button(self):
+	def autoaction(self):
+		print "[blinder] " + self.__NAME + ": automatic action executed"
 		self.addToQueue()
-		print "no to jedziemy"
 
 	def timeout(self):
 		if (self.__STIME + self.__TIME) < time.time():
 			self.addToQueue()
 		
 	def config(self):
-		print(self.pinup, self.pindown, self.time)
+		return(self.__PIN_UP, self.__PIN_DOWN, self.__TIME)
 
 class Button:
 

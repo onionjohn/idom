@@ -3,52 +3,62 @@
 import wiringpi
 import urlparse
 import time
+import json
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
 from objects import *
 
 global queue
 
-wiringpi.wiringPiSetup()
+class myHandler(BaseHTTPRequestHandler):
+	def do_GET(self):
+		reply = ''
+		self.send_response(200)
+   		self.send_header("Content-type", "text/html")
+		self.end_headers()
+		parsed = urlparse.urlparse(self.path)	
+		action = urlparse.parse_qs(parsed.query)['action'][0]
+		print "[http] Requested action: " + action
+		if action == "getconfig":
+			id = int(urlparse.parse_qs(parsed.query)['id'][0])
+			reply = main.blinders[id].config()
+		elif action == "autoaction":
+			id = int(urlparse.parse_qs(parsed.query)['id'][0])
+                        main.blinders[id].autoaction()
+		elif action == "getstate":
+			id = int(urlparse.parse_qs(parsed.query)['id'][0])
+                        reply = main.blinders[id].getstate()
+		elif action == "queuelen":
+                        reply = 'Processing objects: ' + str(len(queue)) + '\n'
+		self.wfile.write(reply)
+		return
 
-rolety = {'roleta1':Blinder(0,2,3), \
-	'roleta2':Blinder(6,3,6), \
-	'roleta2':Blinder(65,66,5)}
+class Main():
 
-button = Button(7, rolety['roleta1'])
-button1 = Button(10, rolety['roleta2'])
+	config = []
+	blinders = []
+	def __init__(self):
+		print "Initialization started"
+		raw_json = open("../config/config.json").read()
+		self.config = json.loads(raw_json)
+		print "Config file version: " + self.config['version']
+		print "Preparing blinders..."
+		for i in self.config['group']:
+			print "  + Group: " + i['name']
+			for j in i['blinders']:
+				print "    " + j['name'] + "\t" + j['description']
+				self.blinders.insert(j['id'], Blinder(pinup=j['pinup'], pindown=j['pindown'], time=j['wtime'], name=j['name']))
+		print "Initialized " + str(len(self.blinders)) + " objects"
+		print "Initialization finished"
 
-class MyHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-	path = self.path
-	par = urlparse.parse_qs(urlparse.urlparse(path).query)
-	if par['blinder'][0] in rolety:
-		print "Request dla: ",par['blinder'], " Kierunek: ", par['dir']
-		rolety[par['blinder'][0]].button()
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-
-        return
-
+	def Config(self):
+		print self.config
 
 if __name__ == "__main__":
     try:
-	server = HTTPServer(('192.168.1.201', 8000), MyHandler)
-	print('Started http server')
+	main = Main()
+	server = HTTPServer(('', 80), myHandler)
 	server.serve_forever()
     except KeyboardInterrupt:
-	print('^C received, shutting down server')
-	server.socket.close()
-
-while True:
-	time.sleep(0.05)
-	
-	button.check()
-	button1.check()
-
-	# here we are checking timeout queue
-	if len(queue) > 0:
-		for i in queue:
-			i.timeout()
+	print('Ctrl+C received, shutting down... Bye.')
 
