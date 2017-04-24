@@ -1,7 +1,7 @@
 {
   "version":"0.1",
-  "i2cbaseaddr":65,
   "i2c":[
+    "baseaddr":65,
     {
       "id":0,
       "address":27
@@ -18,7 +18,7 @@
       "id":3,
       "address":24
     }
-  ],
+],
   "group":[
     {
       "id":0,

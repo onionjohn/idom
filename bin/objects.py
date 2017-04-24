@@ -22,7 +22,9 @@ class Blinder:
 		self.__NAME = name
 		wiringpi.pinMode(self.__PIN_UP,1)
 		wiringpi.pinMode(self.__PIN_DOWN,1)
+		#print "zerowanie" + str(self.__PIN_UP)
 		wiringpi.digitalWrite(self.__PIN_UP,1)
+		#print "zerowanie" + str(self.__PIN_DOWN)
 		wiringpi.digitalWrite(self.__PIN_DOWN,1)
 		return
 
