@@ -1,5 +1,6 @@
 import wiringpi
 import time
+from main import log_action
 
 queue = []
 
@@ -50,7 +51,7 @@ class Blinder:
 	
 	def addToQueue(self):
 		if self in queue:
-			print "[blinder] " + self.__NAME + ': removing from process queue, blinder stopped'
+			log_action('blinder', str(self.__NAME + ': removing from process queue, blinder stopped'))
 			self.__stopMove()
 			queue.remove(self)
 			
@@ -59,18 +60,19 @@ class Blinder:
 			self.__STIME = time.time()
 			if self.__DIRECTION == "Up":
 				self.__moveUp()
-				print "[blinder] " + self.__NAME + ': added to queue, moving UP'
+				log_action('blinder', str(self.__NAME + ': added to queue, moving UP'))
 			else:
 				self.__moveDown()
-				print "[blinder] " + self.__NAME + ': added to queue, moving DOWN'
+				log_action('blinder', str(self.__NAME + ': added to queue, moving DOWN'))
 		return
 
 	def autoaction(self):
-		print "[blinder] " + self.__NAME + ": automatic action executed"
+		log_action('blinder', str(self.__NAME + ': automatic action executed'))
 		self.addToQueue()
 
 	def timeout(self):
 		if (self.__STIME + self.__TIME) < time.time():
+			log_action('blinder', str(self.__NAME + ': Timeout reached, removing from queue'))
 			self.addToQueue()
 		
 	def config(self):

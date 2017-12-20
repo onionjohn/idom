@@ -1,9 +1,12 @@
 #!/usr/bin/python
 
+import traceback
 import wiringpi
 import urlparse
 import time
 import json
+import threading
+import os
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
 from objects import *
@@ -16,6 +19,7 @@ def log_action(module, message):
 	print text
 
 class myHandler(BaseHTTPRequestHandler):
+
 	def do_GET(self):
 		reply = ''
 		self.send_response(200)
@@ -38,7 +42,11 @@ class myHandler(BaseHTTPRequestHandler):
 				reply = 'Processing objects: ' + str(len(queue)) + '\n'
 			self.wfile.write(reply)
 		except:
-			log_action("http", "hmmm, don't know what to say...")
+			log_action("http", "Unknown action, sending index.html")
+			os.chdir('../www')
+			reply = open(self.path[1:]).read()
+			self.wfile.write(reply)
+			traceback.print_exc()
 		return
 
 	def log_message(self, format, *args):
@@ -75,11 +83,28 @@ class Main():
 		print "Initialization finished. Ready to rock.\n"
 
 	def Config(self):
-		print self.config
+		pass
+
+
+class QueueThread(threading.Thread):
+	def run(self):
+		log_action('queuerunner', 'Queue thread started')
+		while True:
+			time.sleep(0.05)                                  
+			if len(queue) > 0:                                
+				for i in queue:                           
+					i.timeout()                       
+	
+		
+
+
 
 if __name__ == "__main__":
     try:
 	main = Main()
+	queuerunner = QueueThread()
+	queuerunner.daemon = True
+	queuerunner.start()
 	server = HTTPServer(('', 80), myHandler)
 	server.serve_forever()
     except KeyboardInterrupt:

@@ -30,7 +30,7 @@
           "description":"Długie okno",
           "pinup":1,
           "pindown":2,
-          "wtime":10
+          "wtime":5
         },
         {
           "id":1,
@@ -38,7 +38,7 @@
           "description":"Narożne",
           "pinup":3,
           "pindown":4,
-          "wtime":10
+          "wtime":5
         },
         {
           "id":2,
@@ -59,7 +59,7 @@
         {
           "id":4,
           "name":"Salon 2",
-          "description":"Wyjście na ogród",
+          "description":"Wyjście na ogrod",
           "pinup":9,
           "pindown":10,
           "wtime":10
@@ -82,7 +82,7 @@
         },
         {
           "id":7,
-          "name":"Kotłownia",
+          "name":"Kotlownia",
           "description":"Zimą tu najcieplej",
           "pinup":15,
           "pindown":16,
@@ -96,15 +96,15 @@
       "blinders":[
         {
           "id":8,
-          "name":"Łazienka",
-          "description":"Łazienka na górze",
+          "name":"Lazienka",
+          "description":"Lazienka na gorze",
           "pinup":17,
           "pindown":18,
           "wtime":10
         },
         {
           "id":9,
-          "name":"Pokój 1",
+          "name":"Pokoj 1",
           "description":"Patryśkolandia",
           "pinup":19,
           "pindown":20,
@@ -128,7 +128,7 @@
         },
         {
           "id":12,
-          "name":"Pokój",
+          "name":"Pokoj",
           "description":"Drzwi balkonowe",
           "pinup":25,
           "pindown":26,
